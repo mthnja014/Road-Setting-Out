@@ -1,0 +1,197 @@
+<html>
+
+<head>
+
+<meta charset='UTF-8' />
+
+<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+
+<meta name="description" content=" IDW calculator">  
+
+<meta name="keywords" content="degrees, Radians, Cartesian, geographic, distance, coordinates">  
+
+<meta name="author" content="Mthiyane, N M">
+
+<meta name="Publishing Agency" content="InterGeomatics Pty Ltd">  
+
+<meta name="Date of Creation" content="2023">
+
+<meta name="Contact Information" content="Physical Address: 1876 Umzunjani drive, Inanda, 4309. Email address:mthnja014@myuct.ac.za">
+
+<title>circle curve Traverse</title>
+
+</head>
+
+<body>
+
+</form></br>
+
+<form>
+
+<fieldset>
+
+<legend>Horizontal curve control points</legend><br><br>
+
+<button type="button" onclick="myFunction()">Compute Traverse</button> <input type="reset" value="Clear All"><br><br>
+
+<table style="width:flex;">
+
+<tr><td style="background-color: blue; text-align: center">Ypi</td>    <td style="background-color: rgb(230, 230, 130); text-align: center; width: 120px"><input type="number" id="y"></td></tr>
+
+<tr><td style="background-color: blue; text-align: center; width: 120px;">Xpi</td><td style="background-color: rgb(230, 230, 230); text-align: center; width: 120px"><input type="number" id="x"></td></tr>
+
+<tr><td style="background-color: blue; text-align: center">BCC-PI</td><td style="background-color: rgb(230, 230, 130); text-align: center; width: 120px"><input type="number" id="drn1"></td></tr>
+
+<tr><td style="background-color: blue; text-align: center; width: 120px;">PI-ECC</td><td style="background-color: rgb(230, 230, 230); text-align: center; width: 120px"><input type="number" id="drn2"></td></tr>
+
+<tr><td style="background-color: blue; text-align: center; width: 120px;">R</td><td style="background-color: rgb(230, 230, 130); text-align: center; width: 120px"><input type="number" id="ra"></td></tr>  
+
+</table>
+
+<br><br><fieldset><p id="ds"></p></fieldset>
+
+<script>
+
+function myFunction() {
+
+var yi = document.getElementById("y").value;
+
+var xi = document.getElementById("x").value;
+
+var bcc_pi = document.getElementById("drn1").value;
+
+var pi_ecc = document.getElementById("drn2").value;
+
+var R = document.getElementById("ra").value;
+
+var I = Math.pow((pi_ecc - bcc_pi), 1);
+
+var T = R*Math.tan(I/2*Math.PI/180);
+
+var T1 = R*Math.tan(I/2*Math.PI/180);
+
+var T1 = T1.toFixed(2);
+
+var pi_bcc = Math.pow(bcc_pi, 1) - Math.pow(180, 1);
+
+var deg1 = Math.floor(pi_bcc);
+
+var min1 = Math.floor((Math.pow(pi_bcc, 1) - Math.pow(deg1, 1))*60);
+
+var sec1 = Math.round(((Math.pow(pi_bcc, 1) - Math.pow(deg1, 1))*60 - Math.pow(min1, 1))*60);
+
+var bcc_c = Math.pow(bcc_pi, 1) + Math.pow(I/4, 1);
+
+var deg2 = Math.floor(bcc_c);
+
+var min2 = Math.floor((Math.pow(bcc_c, 1) - Math.pow(deg2, 1))*60);
+
+var sec2 = Math.round(((Math.pow(bcc_c, 1) - Math.pow(deg2, 1))*60 - Math.pow(min2, 1))*60);
+
+ 
+
+var chord = 2*R*Math.sin(I/4*Math.PI/180);
+
+var chord1 = 2*R*Math.sin(I/4*Math.PI/180);
+
+var chord1 = chord1.toFixed(2); 
+
+var c_ecc = Math.pow(bcc_pi, 1) + Math.pow(3*(I/4), 1);
+
+var deg3 = Math.floor(c_ecc);
+
+var min3 = Math.floor((Math.pow(c_ecc, 1) - Math.pow(deg3, 1))*60);
+
+var sec3 = Math.round(((Math.pow(c_ecc, 1) - Math.pow(deg3, 1))*60 - Math.pow(min3, 1))*60);
+
+var ecc_pi = Math.pow((pi_ecc - 180), 1);
+
+var deg4 = Math.floor(ecc_pi);
+
+var min4 = Math.floor((Math.pow(ecc_pi, 1) - Math.pow(deg4, 1))*60);
+
+var sec4 = Math.round(((Math.pow(ecc_pi, 1) - Math.pow(deg4, 1))*60 - Math.pow(min4, 1))*60);
+
+var xbcc = Math.pow(xi, 1) + T*Math.cos(pi_bcc*Math.PI/180);
+
+var xbccp = Math.pow(xi, 1) + T*Math.cos(pi_bcc*Math.PI/180);
+
+var xbccp = xbccp.toFixed(2);
+
+var ybcc = Math.pow(yi, 1) + T*Math.sin(pi_bcc*Math.PI/180);
+
+var ybccp = Math.pow(yi, 1) + T*Math.sin(pi_bcc*Math.PI/180);
+
+var ybccp = ybccp.toFixed(2);
+
+var xc = Math.pow(xbcc, 1) + chord*Math.cos(bcc_c*Math.PI/180);
+
+var xcp = Math.pow(xbcc, 1) + chord*Math.cos(bcc_c*Math.PI/180);
+
+var xcp = xcp.toFixed(2);
+
+var yc = Math.pow(ybcc, 1) + chord*Math.sin(bcc_c*Math.PI/180);
+
+var ycp = Math.pow(ybcc, 1) + chord*Math.sin(bcc_c*Math.PI/180);
+
+var ycp = ycp.toFixed(2);
+
+var xecc = Math.pow(xc, 1) + chord*Math.cos(c_ecc*Math.PI/180);
+
+var xeccp = Math.pow(xc, 1) + chord*Math.cos(c_ecc*Math.PI/180);
+
+var xeccp = xeccp.toFixed(2);
+
+var yecc = Math.pow(yc, 1) + chord*Math.sin(c_ecc*Math.PI/180);
+
+var yeccp = Math.pow(yc, 1) + chord*Math.sin(c_ecc*Math.PI/180);
+
+var yeccp = yeccp.toFixed(2);
+
+var xii = Math.pow(xecc, 1) + T*Math.cos(ecc_pi*Math.PI/180);
+
+var xiip = Math.pow(xecc, 1) + T*Math.cos(ecc_pi*Math.PI/180);
+
+var xiip = xiip.toFixed(2);
+
+var yii = Math.pow(yecc, 1) + T*Math.sin(ecc_pi*Math.PI/180);
+
+var yiip = Math.pow(yecc, 1) + T*Math.sin(ecc_pi*Math.PI/180);
+
+var yiip = yiip.toFixed(2);
+
+var dir = "Direction";
+
+var dist = "Distance";
+
+var sta = "Station";
+
+var yy = "Y";
+
+var xx = "X";
+
+var tra0 = "<p1 style='color: transparent'>_________</p1>";
+
+var tra = "<p1 style='color: transparent'>____________</p1>";
+
+var tra1 = "<p1 style='color: transparent'>______________</p1>";
+
+var tra2 = "<p1 style='color: transparent'>_____________________________________________</p1>";
+
+var lnb = "________________________________________________________________________________________________"
+
+var condi1 = dir +" " + tra + dist + tra + sta + tra +  yy + tra + xx + "<br>" + lnb + "<br>" + tra2 + "PI" + tra + yi + tra0 + xi + "<br>" + lnb + "<br>" + deg1 + "." + min1 + "." + sec1 + tra1 + T1 + "<br>" + lnb + "<br>" + tra2 + "BCC" + tra + ybccp + tra0 + xbccp + "<br>" + lnb + "<br>" + deg2 + "." + min2 + "." + sec2 + tra1 + chord1 + "<br>" + lnb + "<br>" + tra2 + "C" + tra + ycp + tra0 + xcp + "<br>" + lnb + "<br>" + deg3 + "." + min3 + "." + sec3 + tra1 + chord1 + "<br>" + lnb + "<br>" + tra2 + "PI" + tra + yeccp + tra0 + xeccp + "<br>" + lnb + "<br>" + deg4 + "." + min4 + "." + sec4 + tra1 + T1 + "<br>" + lnb + "<br>" + tra2 + "ECC" + tra + yiip + tra0 + xiip;
+
+if (yi == "" || xi == "" || bcc_pi == "" || pi_ecc == "" || R == "") {
+
+document.getElementById("ds").innerHTML = "Please Insert into all Input Fields!";
+
+}else 
+
+document.getElementById("ds").innerHTML = condi1;
+
+}
+
+</script>
+  </body>
+  </html>
