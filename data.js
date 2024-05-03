@@ -5,7 +5,6 @@ var data = {
 var setting = JSON.parse(data.setting);
 
 function horizontal_sc() {
-function myFunction() {
 
 var R = document.getElementById("r").value;
 
@@ -509,7 +508,6 @@ document.getElementById("ds").innerHTML = cond8;
 
 document.getElementById("ds").innerHTML = "Decrease the value of I or R because the arc length is too much!" ;
 
-}
 }
 
 function horizontal_setting() {
