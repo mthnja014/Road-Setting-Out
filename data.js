@@ -4,6 +4,10 @@ var data = {
       }
 var setting = JSON.parse(data.setting);
 
+function horizontal_sc() {
+
+}
+
 function horizontal_setting() {
     document.getElementById('output').innerHTML = setting.horizontal_setting;
 }
