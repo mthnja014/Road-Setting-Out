@@ -1,3 +1,7 @@
+body {
+   background-image: url('road_background.png')
+}
+
 #tbl {
    text-align: "center";
    width: 10%;
