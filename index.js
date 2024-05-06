@@ -646,3 +646,7 @@ function horizontal_setting() {
 function horizontal_traverse() {
     document.getElementById('output').innerHTML = traverse.horizontal_traverse;
 }
+
+function vertical_setting() {
+    document.getElementById('output').innerHTML = setting.vertical_setting;
+}
