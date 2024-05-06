@@ -332,7 +332,7 @@ document.getElementById("ds").innerHTML = "The peg interval must be 20!";
 
 }else if (choordi1 > 0 && choordi1 < 20 || choordi1 == 20) {
 
-document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + cond2 + "</p>";
+document.getElementById("ds").innerHTML = <"<p style='background-color: #fff'>" + cond2 + "</p>";
 
 }else if (choordi2 > 0 && choordi2 < 20 || choordi2 == 20) {
 
@@ -344,19 +344,19 @@ document.getElementById("ds").innerHTML = cond4;
 
 }else if (choordi4 > 0 && choordi4 < 20 || choordi4 == 20) {
 
-document.getElementById("ds").innerHTML = cond5;
+document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + cond5 + "</p>";
 
 }else if (choordi5 > 0 && choordi5 < 20 || choordi5 == 20) {
 
-document.getElementById("ds").innerHTML = cond6;
+document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + cond6 "</p>";
 
 }else if (choordi6 > 0 && choordi6 < 20 || choordi6 == 20) {
 
-document.getElementById("ds").innerHTML = cond7;
+document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + cond7 + "</p>";
 
 }else if (choordi7 > 0 && choordi7 < 20 || choordi7 == 20) {
 
-document.getElementById("ds").innerHTML = cond8;
+document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + cond8 + "</p>";
 
 }else
 
