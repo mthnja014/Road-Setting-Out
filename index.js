@@ -538,7 +538,7 @@ document.getElementById("ds").innerHTML = skd_bvcp;
 }else if (g1 != "" && g2 != "" && l1 != "" && skd_pi != "" && ht != "" && skd != "" && G < 0  && l1 == 100) {
 document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + condi1 + "</p>";
 }else if (g1 != "" && g2 != "" && l1 != "" && skd_pi != "" && ht != "" && skd != "" && G < 0 && l1 == 80) {
-document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + condi2 + </p>";
+document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + condi2 + "</p>";
 }else if (g1 != "" && g2 != "" && l1 != "" && skd_pi != "" && ht != "" && skd != "" && G < 0&& l1 == 60) {
 document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + condi3 + "</p>";
 }else if (g1 != "" && g2 != "" && l1 != "" && skd_pi != "" && ht != "" && skd != "" && G < 0 && l1 == 40) {
