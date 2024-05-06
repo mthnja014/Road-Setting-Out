@@ -332,7 +332,7 @@ document.getElementById("ds").innerHTML = "The peg interval must be 20!";
 
 }else if (choordi1 > 0 && choordi1 < 20 || choordi1 == 20) {
 
-document.getElementById("ds").innerHTML = <"<p style='background-color: #fff'>" + cond2 + "</p>";
+document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + cond2 + "</p>";
 
 }else if (choordi2 > 0 && choordi2 < 20 || choordi2 == 20) {
 
