@@ -357,7 +357,7 @@ document.getElementById("ds").innerHTML = "Decrease the value of I or R because 
 
 }
 
-function horizontal_traverse() {
+function horizontal_tr() {
 var yi = document.getElementById("y").value;
 var xi = document.getElementById("x").value;
 var bcc_pi = document.getElementById("drn1").value;
