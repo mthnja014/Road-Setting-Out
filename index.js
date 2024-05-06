@@ -536,7 +536,7 @@ document.getElementById("ds").innerHTML = "Length must be a multiple of 20s";
 }else if (g1 != "" && g2 != "" && l1 != "" && skd_pi != "" && ht != "" && skd == "") {
 document.getElementById("ds").innerHTML = skd_bvcp;
 }else if (g1 != "" && g2 != "" && l1 != "" && skd_pi != "" && ht != "" && skd != "" && G < 0  && l1 == 100) {
-document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + condi1 "</p>";
+document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + condi1 + "</p>";
 }else if (g1 != "" && g2 != "" && l1 != "" && skd_pi != "" && ht != "" && skd != "" && G < 0 && l1 == 80) {
 document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + condi2 + </p>";
 }else if (g1 != "" && g2 != "" && l1 != "" && skd_pi != "" && ht != "" && skd != "" && G < 0&& l1 == 60) {
