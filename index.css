@@ -1,0 +1,14 @@
+#tbl {
+   text-align: "center";
+   width: 10%;
+   height: 5%;
+   text-align: center;
+   background-color: rgb(100, 100, 220);
+   color: rgb(255,255,255);
+   border-radius: 2%;
+}
+.computations {
+   position: absolute;
+   left: 15%;
+   right: 2%;
+}
