@@ -1,449 +1,296 @@
 var data = {
     "setting":
-        `{"horizontal_setting": "<fieldset><legend>Horizontal curve setting out</legend><center><table style='width:flex;'><tr><td style='background-color: blue; text-align: center'>R</td><td style='background-color: rgb(230, 230, 130); text-align: center; width: 120px'><input type='number' id='r'></td></tr><tr><td style='background-color: blue; text-align: center; width: 120px;'>I</td><td style='background-color: rgb(230, 230, 230); text-align: center; width: 120px'><input type='number' id='i'></td></tr><tr><td style='background-color: blue; text-align: center'>Ch_bcc</td><td style='background-color: rgb(230, 230, 130); text-align: center; width: 120px'><input type='number' id='ch'></td></tr><td style='background-color: blue; text-align: center; width: 120px;'>peg_interval</td><td style='background-color: rgb(230, 230, 230); text-align: center; width: 120px'><input type='number' id='peg' value='20'></td></tr><tr><td style='background-color: blue; text-align: center; width: 120px;'>BCC-PI</td><td style='background-color: rgb(230, 230, 130); text-align: center; width: 120px'><input type='number' id='ori'></td><tr><td style='background-color: blue; text-align: center; width: 120px;'>SKD</td><td style='background-color: rgb(230, 230, 230); text-align: center; width: 120px'><input type='number' id='skd'></td></tr></table></center><br><br><button type='button' onclick='horizontal_sc()'>Compute Setting Out Data</button> <input type='reset' value='Clear All'><br><br><fieldset><p id='ds'></p></fieldset><br><br>"}`,
+        `{"horizontal_setting": "<fieldset><legend>Horizontal curve setting out</legend><center><table style='width:flex;'><tr><td style='background-color: blue; text-align: center'>R</td><td style='background-color: rgb(230, 230, 130); text-align: center; width: 120px'><input type='number' id='r'></td></tr><tr><td style='background-color: blue; text-align: center; width: 120px;'>I</td><td style='background-color: rgb(230, 230, 230); text-align: center; width: 120px'><input type='number' id='i'></td></tr><tr><td style='background-color: blue; text-align: center'>Ch_bcc</td><td style='background-color: rgb(230, 230, 130); text-align: center; width: 120px'><input type='number' id='ch'></td></tr><td style='background-color: blue; text-align: center; width: 120px;'>peg_interval</td><td style='background-color: rgb(230, 230, 230); text-align: center; width: 120px'><input type='number' id='peg' value='20'></td></tr><tr><td style='background-color: blue; text-align: center; width: 120px;'>BCC-PI</td><td style='background-color: rgb(230, 230, 130); text-align: center; width: 120px'><input type='number' id='ori'></td><tr><td style='background-color: blue; text-align: center; width: 120px;'>SKD</td><td style='background-color: rgb(230, 230, 230); text-align: center; width: 120px'><input type='number' id='skd'></td></tr></table></center><br><br><button type='button' onclick='horizontal_sc()'>Compute Setting Out Data</button> <input type='reset' value='Clear All'><br><br><fieldset><p id='ds'></p></fieldset>"}`,
+        `{"horizontal_traverse": "<fieldset><legend>Horizontal curve control points</legend><br><br><button type='button' onclick='horizontal_tr()'>Compute Traverse</button> <input type='reset' value='Clear All'><br><br><table style='width:flex;'><tr><td style='background-color: blue; text-align: center'>Ypi</td>    <td style='background-color: rgb(230, 230, 130); text-align: center; width: 120px'><input type='number' id='y'></td></tr><tr><td style='background-color: blue; text-align: center; width: 120px;'>Xpi</td><td style='background-color: rgb(230, 230, 230); text-align: center; width: 120px'><input type='number' id='x'></td></tr><tr><td style='background-color: blue; text-align: center'>BCC-PI</td><td style='background-color: rgb(230, 230, 130); text-align: center; width: 120px'><input type='number' id='drn1'></td></tr><tr><td style='background-color: blue; text-align: center; width: 120px;'>PI-ECC</td><td style='background-color: rgb(230, 230, 230); text-align: center; width: 120px'><input type='number' id='drn2'></td></tr><tr><td style='background-color: blue; text-align: center; width: 120px;'>R</td><td style='background-color: rgb(230, 230, 130); text-align: center; width: 120px'><input type='number' id='ra'></td></tr>  </table><br><br><fieldset><p id='ds'></p></fieldset>"}`,
       }
+
+
 var setting = JSON.parse(data.setting);
 
 function horizontal_sc() {
-
-var R = document.getElementById("r").value;
-
-var I = document.getElementById("i").value;
-
-var ch_bcc = document.getElementById("ch").value;
-
-var peg_int = document.getElementById("peg").value;
-
-var ori = document.getElementById("ori").value;
-
-var skd = document.getElementById("skd").value;
-
-var arc1 = Math.pow(skd, 1) - Math.pow(ch_bcc, 1);
-
-var arc_l = R*I*Math.PI/180;
-
-var arc_lp = R*I*Math.PI/180;
-
-var arc_lp = arc_lp.toFixed(2);
-
-var ch_ecc = Math.pow(ch_bcc, 1) + Math.pow(arc_l, 1);
-
-var ch_ecc = ch_ecc.toFixed(2);
+    var R = document.getElementById("r").value;
+    var I = document.getElementById("i").value;
+    var ch_bcc = document.getElementById("ch").value;
+    var peg_int = document.getElementById("peg").value;
+    var ori = document.getElementById("ori").value;
+    var skd = document.getElementById("skd").value;
+    var arc1 = Math.pow(skd, 1) - Math.pow(ch_bcc, 1);
+    var arc_l = R*I*Math.PI/180;
+    var arc_lp = R*I*Math.PI/180;
+    var arc_lp = arc_lp.toFixed(2);
+    var ch_ecc = Math.pow(ch_bcc, 1) + Math.pow(arc_l, 1);
+    var ch_ecc = ch_ecc.toFixed(2);
 
 // offset angle
-
-var a = arc1/(2*R)*180/Math.PI;
-
-var a1 = peg_int/(2*R)*180/Math.PI;
-
-var deg1 = Math.floor(a);
-
-var min1 = Math.floor((Math.pow(a, 1) - Math.pow(deg1, 1))*60);
-
-var sec1 = Math.round(((Math.pow(a, 1) - Math.pow(deg1, 1))*60 - Math.pow(min1, 1))*60);
-
-var deg2 = Math.floor(a1);
-
-var min2 = Math.floor((Math.pow(a1, 1) - Math.pow(deg2, 1))*60);
-
-var sec2 = Math.round(((Math.pow(a1, 1) - Math.pow(deg2, 1))*60 - Math.pow(min2, 1))*60);
-
-//var deg3 = Math.floor(a2);
-
-//var min3 = Math.floor((Math.pow(a2, 1) - Math.pow(deg3, 1))*60);
-
-//var sec3 = Math.round(((Math.pow(a2, 1) - Math.pow(deg3, 1))*60 - Math.pow(min3, 1))*60);
-
-// instrument direction
-
-var ai = Math.pow(ori, 1) + Math.pow(a, 1);
-
-var ai1 = Math.pow(ai, 1) + Math.pow(a1, 1);
-
-var ai2 = Math.pow(ai1, 1) + Math.pow(a1, 1);
-
-var ai3 = Math.pow(ai2, 1) + Math.pow(a1, 1);
-
-var ai4 = Math.pow(ai3, 1) + Math.pow(a1, 1);
-
-var ai5 = Math.pow(ai4, 1) + Math.pow(a1, 1);
-
-var ai6 = Math.pow(ai5, 1) + Math.pow(a1, 1);
-
-var ai7 = Math.pow(ai6, 1) + Math.pow(a1, 1);
-
-var ai8 = Math.pow(ai7, 1) + Math.pow(a1, 1);
-
-var degi1 = Math.floor(ai);
-
-var mini1 = Math.floor((Math.pow(ai, 1) - Math.pow(degi1, 1))*60);
-
-var seci1 = Math.round(((Math.pow(ai, 1) - Math.pow(degi1, 1))*60 - Math.pow(mini1, 1))*60);
-
-var degi2 = Math.floor(ai1);
-
-var mini2 = Math.floor((Math.pow(ai1, 1) - Math.pow(degi2, 1))*60);
-
-var seci2 = Math.round(((Math.pow(ai1, 1) - Math.pow(degi2, 1))*60 - Math.pow(mini2, 1))*60);
-
-var degi3 = Math.floor(ai2);
-
-var mini3 = Math.floor((Math.pow(ai2, 1) - Math.pow(degi3, 1))*60);
-
-var seci3 = Math.round(((Math.pow(ai2, 1) - Math.pow(degi3, 1))*60 - Math.pow(mini3, 1))*60);
-
-var degi4 = Math.floor(ai3);
-
-var mini4 = Math.floor((Math.pow(ai3, 1) - Math.pow(degi4, 1))*60);
-
-var seci4 = Math.round(((Math.pow(ai3, 1) - Math.pow(degi4, 1))*60 - Math.pow(mini4, 1))*60);
-
-var degi5 = Math.floor(ai4);
-
-var mini5 = Math.floor((Math.pow(ai4, 1) - Math.pow(degi5, 1))*60);
-
-var seci5 = Math.round(((Math.pow(ai4, 1) - Math.pow(degi5, 1))*60 - Math.pow(mini5, 1))*60);
-
-var degi6 = Math.floor(ai5);
-
-var mini6 = Math.floor((Math.pow(ai5, 1) - Math.pow(degi6, 1))*60);
-
-var seci6 = Math.round(((Math.pow(ai5, 1) - Math.pow(degi6, 1))*60 - Math.pow(mini6, 1))*60);
-
-var degi7 = Math.floor(ai6);
-
-var mini7 = Math.floor((Math.pow(ai6, 1) - Math.pow(degi7, 1))*60);
-
-var seci7 = Math.round(((Math.pow(ai6, 1) - Math.pow(degi7, 1))*60 - Math.pow(mini7, 1))*60);
-
-var degi8 = Math.floor(ai7);
-
-var mini8 = Math.floor((Math.pow(ai7, 1) - Math.pow(degi8, 1))*60);
-
-var seci8 = Math.round(((Math.pow(ai7, 1) - Math.pow(degi8, 1))*60 - Math.pow(mini8, 1))*60);
-
-var degi9 = Math.floor(ai8);
-
-var mini9 = Math.floor((Math.pow(ai8, 1) - Math.pow(degi9, 1))*60);
-
-var seci9 = Math.round(((Math.pow(ai8, 1) - Math.pow(degi9, 1))*60 - Math.pow(mini9, 1))*60);
-
-var deg0 = Math.floor(ori);
-
-var min0 = Math.floor((Math.pow(ori, 1) - Math.pow(deg0, 1))*60);
-
-var sec0 = Math.round(((Math.pow(ori, 1) - Math.pow(deg0, 1))*60 - Math.pow(min0, 1))*60);
+    var a = arc1/(2*R)*180/Math.PI;
+    var a1 = peg_int/(2*R)*180/Math.PI;
+    var deg1 = Math.floor(a);
+    var min1 = Math.floor((Math.pow(a, 1) - Math.pow(deg1, 1))*60);
+    var sec1 = Math.round(((Math.pow(a, 1) - Math.pow(deg1, 1))*60 - Math.pow(min1, 1))*60);
+    var deg2 = Math.floor(a1);
+    var min2 = Math.floor((Math.pow(a1, 1) - Math.pow(deg2, 1))*60);
+    var sec2 = Math.round(((Math.pow(a1, 1) - Math.pow(deg2, 1))*60 - Math.pow(min2, 1))*60);
+    //var deg3 = Math.floor(a2);
+    //var min3 = Math.floor((Math.pow(a2, 1) - Math.pow(deg3, 1))*60);
+    //var sec3 = Math.round(((Math.pow(a2, 1) - Math.pow(deg3, 1))*60 - Math.pow(min3, 1))*60);
+    // instrument direction
+    
+    var ai = Math.pow(ori, 1) + Math.pow(a, 1);
+    var ai1 = Math.pow(ai, 1) + Math.pow(a1, 1);
+    var ai2 = Math.pow(ai1, 1) + Math.pow(a1, 1);
+    var ai3 = Math.pow(ai2, 1) + Math.pow(a1, 1);
+    var ai4 = Math.pow(ai3, 1) + Math.pow(a1, 1);
+    var ai5 = Math.pow(ai4, 1) + Math.pow(a1, 1);
+    var ai6 = Math.pow(ai5, 1) + Math.pow(a1, 1);
+    var ai7 = Math.pow(ai6, 1) + Math.pow(a1, 1);
+    var ai8 = Math.pow(ai7, 1) + Math.pow(a1, 1);
+    var degi1 = Math.floor(ai);
+    var mini1 = Math.floor((Math.pow(ai, 1) - Math.pow(degi1, 1))*60);
+    var seci1 = Math.round(((Math.pow(ai, 1) - Math.pow(degi1, 1))*60 - Math.pow(mini1, 1))*60);
+    
+    var degi2 = Math.floor(ai1);
+    var mini2 = Math.floor((Math.pow(ai1, 1) - Math.pow(degi2, 1))*60);
+    var seci2 = Math.round(((Math.pow(ai1, 1) - Math.pow(degi2, 1))*60 - Math.pow(mini2, 1))*60);
+    
+    var degi3 = Math.floor(ai2);
+    var mini3 = Math.floor((Math.pow(ai2, 1) - Math.pow(degi3, 1))*60);
+    var seci3 = Math.round(((Math.pow(ai2, 1) - Math.pow(degi3, 1))*60 - Math.pow(mini3, 1))*60);
+    
+    var degi4 = Math.floor(ai3);
+    var mini4 = Math.floor((Math.pow(ai3, 1) - Math.pow(degi4, 1))*60);
+    var seci4 = Math.round(((Math.pow(ai3, 1) - Math.pow(degi4, 1))*60 - Math.pow(mini4, 1))*60);
+    
+    var degi5 = Math.floor(ai4);
+    var mini5 = Math.floor((Math.pow(ai4, 1) - Math.pow(degi5, 1))*60);
+    var seci5 = Math.round(((Math.pow(ai4, 1) - Math.pow(degi5, 1))*60 - Math.pow(mini5, 1))*60);
+    
+    var degi6 = Math.floor(ai5);
+    var mini6 = Math.floor((Math.pow(ai5, 1) - Math.pow(degi6, 1))*60);
+    var seci6 = Math.round(((Math.pow(ai5, 1) - Math.pow(degi6, 1))*60 - Math.pow(mini6, 1))*60);
+    
+    var degi7 = Math.floor(ai6);
+    var mini7 = Math.floor((Math.pow(ai6, 1) - Math.pow(degi7, 1))*60);
+    var seci7 = Math.round(((Math.pow(ai6, 1) - Math.pow(degi7, 1))*60 - Math.pow(mini7, 1))*60);
+    
+    var degi8 = Math.floor(ai7);
+    var mini8 = Math.floor((Math.pow(ai7, 1) - Math.pow(degi8, 1))*60);
+    var seci8 = Math.round(((Math.pow(ai7, 1) - Math.pow(degi8, 1))*60 - Math.pow(mini8, 1))*60);
+    
+    var degi9 = Math.floor(ai8);
+    var mini9 = Math.floor((Math.pow(ai8, 1) - Math.pow(degi9, 1))*60);
+    var seci9 = Math.round(((Math.pow(ai8, 1) - Math.pow(degi9, 1))*60 - Math.pow(mini9, 1))*60);
+    
+    var deg0 = Math.floor(ori);
+    var min0 = Math.floor((Math.pow(ori, 1) - Math.pow(deg0, 1))*60);
+    var sec0 = Math.round(((Math.pow(ori, 1) - Math.pow(deg0, 1))*60 - Math.pow(min0, 1))*60);
 
 // polar distance 2Rsin(offset angle)
-
-var pola1 = 2*R*Math.sin(ai*Math.PI/180);
-
-var pola1 = pola1.toFixed(2);
-
-var pola2 = 2*R*Math.sin(ai1*Math.PI/180);
-
-var pola2 = pola2.toFixed(2);
-
-var pola3 = 2*R*Math.sin(ai2*Math.PI/180);
-
-var pola3 = pola3.toFixed(2);
-
-var pola4 = 2*R*Math.sin(ai3*Math.PI/180);
-
-var pola4 = pola4.toFixed(2);
-
-var pola5 = 2*R*Math.sin(ai4*Math.PI/180);
-
-var pola5 = pola5.toFixed(2);
-
-var pola6 = 2*R*Math.sin(ai5*Math.PI/180);
-
-var pola6 = pola6.toFixed(2);
-
-var pola7 = 2*R*Math.sin(ai6*Math.PI/180);
-
-var pola7 = pola7.toFixed(2);
-
-var pola8 = 2*R*Math.sin(ai7*Math.PI/180);
-
-var pola8 = pola8.toFixed(2);
-
-var pola9 = 2*R*Math.sin(ai8*Math.PI/180);
-
-var pola9 = pola9.toFixed(2);
+    var pola1 = 2*R*Math.sin(ai*Math.PI/180);
+    var pola1 = pola1.toFixed(2);
+    
+    var pola2 = 2*R*Math.sin(ai1*Math.PI/180);
+    var pola2 = pola2.toFixed(2);
+    
+    var pola3 = 2*R*Math.sin(ai2*Math.PI/180);
+    var pola3 = pola3.toFixed(2);
+    
+    var pola4 = 2*R*Math.sin(ai3*Math.PI/180);
+    var pola4 = pola4.toFixed(2);
+    
+    var pola5 = 2*R*Math.sin(ai4*Math.PI/180);
+    var pola5 = pola5.toFixed(2);
+    
+    var pola6 = 2*R*Math.sin(ai5*Math.PI/180);
+    var pola6 = pola6.toFixed(2);
+    
+    var pola7 = 2*R*Math.sin(ai6*Math.PI/180);
+    var pola7 = pola7.toFixed(2);
+    
+    var pola8 = 2*R*Math.sin(ai7*Math.PI/180);
+    var pola8 = pola8.toFixed(2);
+    
+    var pola9 = 2*R*Math.sin(ai8*Math.PI/180);
+    var pola9 = pola9.toFixed(2);
 
 // chord length
 
-var choord1 = 2*R*Math.sin(a*Math.PI/180);
+    var choord1 = 2*R*Math.sin(a*Math.PI/180);
+    var choord1 = choord1.toFixed(2);
 
-var choord1 = choord1.toFixed(2);
+    var choord2 = 2*R*Math.sin(a1*Math.PI/180);
+    var choord2 = choord2.toFixed(2);
 
-var choord2 = 2*R*Math.sin(a1*Math.PI/180);
+    var choord3 = 2*R*Math.sin(a1*Math.PI/180);
+    var choord3 = choord3.toFixed(2);
 
-var choord2 = choord2.toFixed(2);
+    var choord4 = 2*R*Math.sin(a1*Math.PI/180);
+    var choord4 = choord4.toFixed(2);
+    
+    var choord5 = 2*R*Math.sin(a1*Math.PI/180);
+    var choord5 = choord5.toFixed(2);
 
-var choord3 = 2*R*Math.sin(a1*Math.PI/180);
+    var choord6 = 2*R*Math.sin(a1*Math.PI/180);
+    var choord6 = choord6.toFixed(2);
 
-var choord3 = choord3.toFixed(2);
+    var choord7 = 2*R*Math.sin(a1*Math.PI/180);
+    var choord7 = choord7.toFixed(2);
 
-var choord4 = 2*R*Math.sin(a1*Math.PI/180);
-
-var choord4 = choord4.toFixed(2);
-
-var choord5 = 2*R*Math.sin(a1*Math.PI/180);
-
-var choord5 = choord5.toFixed(2);
-
-var choord6 = 2*R*Math.sin(a1*Math.PI/180);
-
-var choord6 = choord6.toFixed(2);
-
-var choord7 = 2*R*Math.sin(a1*Math.PI/180);
-
-var choord7 = choord7.toFixed(2);
-
-var choord8 = 2*R*Math.sin(a1*Math.PI/180);
-
-var choord8 = choord8.toFixed(2);
-
-var choord9 = 2*R*Math.sin(a1*Math.PI/180);
-
-var choord9 = choord9.toFixed(2);
-
-var sk = "SKD";
-
-var offs = "Offset Angle";
-
-var inst = "Instrument Direction";
-
-var pol = "Polar Distance";
-
-var cho = "Chord Length";
+    var choord8 = 2*R*Math.sin(a1*Math.PI/180);
+    var choord8 = choord8.toFixed(2);
+    
+    var choord9 = 2*R*Math.sin(a1*Math.PI/180);
+    var choord9 = choord9.toFixed(2);
+    
+    var sk = "SKD";
+    var offs = "Offset Angle";
+    var inst = "Instrument Direction";
+    var pol = "Polar Distance";
+    var cho = "Chord Length";
 
 //var skd = skd;
-
-var skd1 = Math.pow(skd, 1) + Math.pow(peg_int, 1);
-
-var skd2 = Math.pow(skd1, 1) + Math.pow(peg_int, 1);
-
-var skd3 = Math.pow(skd2, 1) + Math.pow(peg_int, 1);
-
-var skd4 = Math.pow(skd3, 1) + Math.pow(peg_int, 1);
-
-var skd5 = Math.pow(skd4, 1) + Math.pow(peg_int, 1);
-
-var skd6 = Math.pow(skd5, 1) + Math.pow(peg_int, 1);
-
-var skd7 = Math.pow(skd6, 1) + Math.pow(peg_int, 1);
-
-var skd8 = Math.pow(skd7, 1) + Math.pow(peg_int, 1);
-
-var arci1 = Math.pow(ch_ecc, 1) - Math.pow(skd, 1);
-
-var aa1 = arci1/(2*R)*180/Math.PI;
-
-var dega1 = Math.floor(aa1);
-
-var mina1 = Math.floor((Math.pow(aa1, 1) - Math.pow(dega1, 1))*60);
-
-var seca1 = Math.round(((Math.pow(aa1, 1) - Math.pow(dega1, 1))*60 - Math.pow(mina1, 1))*60);
-
-var aii = Math.pow(ai, 1) + Math.pow(aa1, 1);
-
-var degii1 = Math.floor(aii);
-
-var minii1 = Math.floor((Math.pow(aii, 1) - Math.pow(degii1, 1))*60);
-
-var secii1 = Math.round(((Math.pow(aii, 1) - Math.pow(degii1, 1))*60 - Math.pow(minii1, 1))*60);
-
-var polai1 = 2*R*Math.sin(aii*Math.PI/180);
-
-var polai1 = polai1.toFixed(2);
-
-var choordi1 = 2*R*Math.sin(aa1*Math.PI/180);
-
-var choordi1 = choordi1.toFixed(2);
-
-var arci2 = Math.pow(ch_ecc, 1) - Math.pow(skd1, 1);
-
-var aa2 = arci2/(2*R)*180/Math.PI;
-
-var dega2 = Math.floor(aa2);
-
-var mina2 = Math.floor((Math.pow(aa2, 1) - Math.pow(dega2, 1))*60);
-
-var seca2 = Math.round(((Math.pow(aa2, 1) - Math.pow(dega2, 1))*60 - Math.pow(mina2, 1))*60);
-
-var aii1 = Math.pow(ai1, 1) + Math.pow(aa2, 1);
-
-var degii2 = Math.floor(aii1);
-
-var minii2 = Math.floor((Math.pow(aii1, 1) - Math.pow(degii2, 1))*60);
-
-var secii2 = Math.round(((Math.pow(aii1, 1) - Math.pow(degii2, 1))*60 - Math.pow(minii2, 1))*60);
-
-var polai2 = 2*R*Math.sin(aii1*Math.PI/180);
-
-var polai2 = polai2.toFixed(2);
-
-var choordi2 = 2*R*Math.sin(aa2*Math.PI/180);
-
-var choordi2 = choordi2.toFixed(2);
-
-var arci3 = Math.pow(ch_ecc, 1) - Math.pow(skd2, 1);
-
-var aa3 = arci3/(2*R)*180/Math.PI;
-
-var dega3 = Math.floor(aa3);
-
-var mina3 = Math.floor((Math.pow(aa3, 1) - Math.pow(dega3, 1))*60);
-
-var seca3 = Math.round(((Math.pow(aa3, 1) - Math.pow(dega3, 1))*60 - Math.pow(mina3, 1))*60);
-
-var aii2 = Math.pow(ai2, 1) + Math.pow(aa3, 1);
-
-var degii3 = Math.floor(aii2);
-
-var minii3 = Math.floor((Math.pow(aii2, 1) - Math.pow(degii3, 1))*60);
-
-var secii3 = Math.round(((Math.pow(aii2, 1) - Math.pow(degii3, 1))*60 - Math.pow(minii3, 1))*60);
-
-var polai3 = 2*R*Math.sin(aii2*Math.PI/180);
-
-var polai3 = polai3.toFixed(2);
-
-var choordi3 = 2*R*Math.sin(aa3*Math.PI/180);
-
-var choordi3 = choordi3.toFixed(2);
-
-var arci4 = Math.pow(ch_ecc, 1) - Math.pow(skd3, 1);
-
-var aa4 = arci4/(2*R)*180/Math.PI;
-
-var dega4 = Math.floor(aa4);
-
-var mina4 = Math.floor((Math.pow(aa4, 1) - Math.pow(dega4, 1))*60);
-
-var seca4 = Math.round(((Math.pow(aa4, 1) - Math.pow(dega4, 1))*60 - Math.pow(mina4, 1))*60);
-
-var aii3 = Math.pow(ai3, 1) + Math.pow(aa4, 1);
-
-var degii4 = Math.floor(aii3);
-
-var minii4 = Math.floor((Math.pow(aii3, 1) - Math.pow(degii4, 1))*60);
-
-var secii4 = Math.round(((Math.pow(aii3, 1) - Math.pow(degii4, 1))*60 - Math.pow(minii4, 1))*60);
-
-var polai4 = 2*R*Math.sin(aii3*Math.PI/180);
-
-var polai4 = polai4.toFixed(2);
-
-var choordi4 = 2*R*Math.sin(aa4*Math.PI/180);
-
-var choordi4 = choordi4.toFixed(2);
-
-var arci5 = Math.pow(ch_ecc, 1) - Math.pow(skd4, 1);
-
-var aa5 = arci5/(2*R)*180/Math.PI;
-
-var dega5 = Math.floor(aa5);
-
-var mina5 = Math.floor((Math.pow(aa5, 1) - Math.pow(dega5, 1))*60);
-
-var seca5 = Math.round(((Math.pow(aa5, 1) - Math.pow(dega5, 1))*60 - Math.pow(mina5, 1))*60);
-
-var aii4 = Math.pow(ai4, 1) + Math.pow(aa5, 1);
-
-var degii5 = Math.floor(aii4);
-
-var minii5 = Math.floor((Math.pow(aii4, 1) - Math.pow(degii5, 1))*60);
-
-var secii5 = Math.round(((Math.pow(aii4, 1) - Math.pow(degii5, 1))*60 - Math.pow(minii5, 1))*60);
-
-var polai5 = 2*R*Math.sin(aii4*Math.PI/180);
-
-var polai5 = polai5.toFixed(2);
-
-var choordi5 = 2*R*Math.sin(aa5*Math.PI/180);
-
-var choordi5 = choordi5.toFixed(2);
-
-var arci6 = Math.pow(ch_ecc, 1) - Math.pow(skd5, 1);
-
-var aa6 = arci6/(2*R)*180/Math.PI;
-
-var dega6 = Math.floor(aa6);
-
-var mina6 = Math.floor((Math.pow(aa6, 1) - Math.pow(dega6, 1))*60);
-
-var seca6 = Math.round(((Math.pow(aa6, 1) - Math.pow(dega6, 1))*60 - Math.pow(mina6, 1))*60);
+    var skd1 = Math.pow(skd, 1) + Math.pow(peg_int, 1);
+    var skd2 = Math.pow(skd1, 1) + Math.pow(peg_int, 1);
+    var skd3 = Math.pow(skd2, 1) + Math.pow(peg_int, 1);
+    var skd4 = Math.pow(skd3, 1) + Math.pow(peg_int, 1);
+    var skd5 = Math.pow(skd4, 1) + Math.pow(peg_int, 1);
+    var skd6 = Math.pow(skd5, 1) + Math.pow(peg_int, 1);
+    var skd7 = Math.pow(skd6, 1) + Math.pow(peg_int, 1);
+    var skd8 = Math.pow(skd7, 1) + Math.pow(peg_int, 1);
+    
+    var arci1 = Math.pow(ch_ecc, 1) - Math.pow(skd, 1);
+    var aa1 = arci1/(2*R)*180/Math.PI;
+    var dega1 = Math.floor(aa1);
+    var mina1 = Math.floor((Math.pow(aa1, 1) - Math.pow(dega1, 1))*60);
+    var seca1 = Math.round(((Math.pow(aa1, 1) - Math.pow(dega1, 1))*60 - Math.pow(mina1, 1))*60);
+    
+    var aii = Math.pow(ai, 1) + Math.pow(aa1, 1);
+    var degii1 = Math.floor(aii);
+    var minii1 = Math.floor((Math.pow(aii, 1) - Math.pow(degii1, 1))*60);
+    var secii1 = Math.round(((Math.pow(aii, 1) - Math.pow(degii1, 1))*60 - Math.pow(minii1, 1))*60);
+    
+    var polai1 = 2*R*Math.sin(aii*Math.PI/180);
+    var polai1 = polai1.toFixed(2);
+    
+    var choordi1 = 2*R*Math.sin(aa1*Math.PI/180);
+    var choordi1 = choordi1.toFixed(2);
+    
+    var arci2 = Math.pow(ch_ecc, 1) - Math.pow(skd1, 1);
+    var aa2 = arci2/(2*R)*180/Math.PI;
+    var dega2 = Math.floor(aa2);
+    var mina2 = Math.floor((Math.pow(aa2, 1) - Math.pow(dega2, 1))*60);
+    var seca2 = Math.round(((Math.pow(aa2, 1) - Math.pow(dega2, 1))*60 - Math.pow(mina2, 1))*60);
+    
+    var aii1 = Math.pow(ai1, 1) + Math.pow(aa2, 1);
+    var degii2 = Math.floor(aii1);
+    var minii2 = Math.floor((Math.pow(aii1, 1) - Math.pow(degii2, 1))*60);
+    var secii2 = Math.round(((Math.pow(aii1, 1) - Math.pow(degii2, 1))*60 - Math.pow(minii2, 1))*60);
+    
+    var polai2 = 2*R*Math.sin(aii1*Math.PI/180);
+    var polai2 = polai2.toFixed(2);
+    
+    var choordi2 = 2*R*Math.sin(aa2*Math.PI/180);
+    var choordi2 = choordi2.toFixed(2);
+    
+    var arci3 = Math.pow(ch_ecc, 1) - Math.pow(skd2, 1);
+    var aa3 = arci3/(2*R)*180/Math.PI;
+    var dega3 = Math.floor(aa3);
+    var mina3 = Math.floor((Math.pow(aa3, 1) - Math.pow(dega3, 1))*60);
+    var seca3 = Math.round(((Math.pow(aa3, 1) - Math.pow(dega3, 1))*60 - Math.pow(mina3, 1))*60);
+    
+    var aii2 = Math.pow(ai2, 1) + Math.pow(aa3, 1);
+    var degii3 = Math.floor(aii2);
+    var minii3 = Math.floor((Math.pow(aii2, 1) - Math.pow(degii3, 1))*60);
+    var secii3 = Math.round(((Math.pow(aii2, 1) - Math.pow(degii3, 1))*60 - Math.pow(minii3, 1))*60);
+    
+    var polai3 = 2*R*Math.sin(aii2*Math.PI/180);
+    var polai3 = polai3.toFixed(2);
+    
+    var choordi3 = 2*R*Math.sin(aa3*Math.PI/180);
+    var choordi3 = choordi3.toFixed(2);
+    
+    var arci4 = Math.pow(ch_ecc, 1) - Math.pow(skd3, 1);
+    var aa4 = arci4/(2*R)*180/Math.PI;
+    var dega4 = Math.floor(aa4);
+    var mina4 = Math.floor((Math.pow(aa4, 1) - Math.pow(dega4, 1))*60);
+    var seca4 = Math.round(((Math.pow(aa4, 1) - Math.pow(dega4, 1))*60 - Math.pow(mina4, 1))*60);
+    
+    var aii3 = Math.pow(ai3, 1) + Math.pow(aa4, 1);
+    var degii4 = Math.floor(aii3);
+    var minii4 = Math.floor((Math.pow(aii3, 1) - Math.pow(degii4, 1))*60);
+    var secii4 = Math.round(((Math.pow(aii3, 1) - Math.pow(degii4, 1))*60 - Math.pow(minii4, 1))*60);
+    
+    var polai4 = 2*R*Math.sin(aii3*Math.PI/180);
+    var polai4 = polai4.toFixed(2);
+    
+    var choordi4 = 2*R*Math.sin(aa4*Math.PI/180);
+    var choordi4 = choordi4.toFixed(2);
+    
+    var arci5 = Math.pow(ch_ecc, 1) - Math.pow(skd4, 1);
+    var aa5 = arci5/(2*R)*180/Math.PI;
+    var dega5 = Math.floor(aa5);
+    var mina5 = Math.floor((Math.pow(aa5, 1) - Math.pow(dega5, 1))*60);
+    var seca5 = Math.round(((Math.pow(aa5, 1) - Math.pow(dega5, 1))*60 - Math.pow(mina5, 1))*60);
+    
+    var aii4 = Math.pow(ai4, 1) + Math.pow(aa5, 1);
+    var degii5 = Math.floor(aii4);
+    var minii5 = Math.floor((Math.pow(aii4, 1) - Math.pow(degii5, 1))*60);
+    var secii5 = Math.round(((Math.pow(aii4, 1) - Math.pow(degii5, 1))*60 - Math.pow(minii5, 1))*60);
+    
+    var polai5 = 2*R*Math.sin(aii4*Math.PI/180);
+    var polai5 = polai5.toFixed(2);
+    
+    var choordi5 = 2*R*Math.sin(aa5*Math.PI/180);
+    var choordi5 = choordi5.toFixed(2);
+    
+    var arci6 = Math.pow(ch_ecc, 1) - Math.pow(skd5, 1);
+    var aa6 = arci6/(2*R)*180/Math.PI;
+    var dega6 = Math.floor(aa6);
+    var mina6 = Math.floor((Math.pow(aa6, 1) - Math.pow(dega6, 1))*60);
+    var seca6 = Math.round(((Math.pow(aa6, 1) - Math.pow(dega6, 1))*60 - Math.pow(mina6, 1))*60);
 
 var aii5 = Math.pow(ai5, 1) + Math.pow(aa6, 1);
-
 var degii6 = Math.floor(aii5);
-
 var minii6 = Math.floor((Math.pow(aii5, 1) - Math.pow(degii6, 1))*60);
-
 var secii6 = Math.round(((Math.pow(aii5, 1) - Math.pow(degii6, 1))*60 - Math.pow(minii6, 1))*60);
 
 var polai6 = 2*R*Math.sin(aii5*Math.PI/180);
-
 var polai6 = polai6.toFixed(2);
 
 var choordi6 = 2*R*Math.sin(aa6*Math.PI/180);
-
 var choordi6 = choordi6.toFixed(2);
 
 var arci7 = Math.pow(ch_ecc, 1) - Math.pow(skd6, 1);
-
 var aa7 = arci7/(2*R)*180/Math.PI;
-
 var dega7 = Math.floor(aa7);
-
 var mina7 = Math.floor((Math.pow(aa7, 1) - Math.pow(dega7, 1))*60);
-
 var seca7 = Math.round(((Math.pow(aa7, 1) - Math.pow(dega7, 1))*60 - Math.pow(mina7, 1))*60);
 
 var aii6 = Math.pow(ai6, 1) + Math.pow(aa7, 1);
-
 var degii7 = Math.floor(aii6);
-
 var minii7 = Math.floor((Math.pow(aii6, 1) - Math.pow(degii7, 1))*60);
-
 var secii7 = Math.round(((Math.pow(aii6, 1) - Math.pow(degii7, 1))*60 - Math.pow(minii7, 1))*60);
 
 var polai7 = 2*R*Math.sin(aii6*Math.PI/180);
-
 var polai7 = polai7.toFixed(2);
 
 var choordi7 = 2*R*Math.sin(aa7*Math.PI/180);
-
 var choordi7 = choordi7.toFixed(2);
 
 var arci8 = Math.pow(ch_ecc, 1) - Math.pow(skd7, 1);
-
 var aa8 = arci8/(2*R)*180/Math.PI;
-
 var dega8 = Math.floor(aa8);
-
 var mina8 = Math.floor((Math.pow(aa8, 1) - Math.pow(dega8, 1))*60);
-
 var seca8 = Math.round(((Math.pow(aa8, 1) - Math.pow(dega8, 1))*60 - Math.pow(mina8, 1))*60);
 
 var aii7 = Math.pow(ai7, 1) + Math.pow(aa8, 1);
-
 var degii8 = Math.floor(aii7);
-
 var minii8 = Math.floor((Math.pow(aii7, 1) - Math.pow(degii8, 1))*60);
-
 var secii8 = Math.round(((Math.pow(aii7, 1) - Math.pow(degii8, 1))*60 - Math.pow(minii8, 1))*60);
 
 var polai8 = 2*R*Math.sin(aii7*Math.PI/180);
-
 var polai8 = polai8.toFixed(2);
 
 var choordi8 = 2*R*Math.sin(aa8*Math.PI/180);
-
 var choordi8 = choordi8.toFixed(2);
 
 var cln = ".....................................................................................................................................................................................................................";
@@ -507,6 +354,10 @@ document.getElementById("ds").innerHTML = cond8;
 }else
 
 document.getElementById("ds").innerHTML = "Decrease the value of I or R because the arc length is too much!" ;
+
+}
+
+function horizontal_traverse() {
 
 }
 
