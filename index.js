@@ -340,7 +340,7 @@ document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" +
 
 }else if (choordi3 > 0 && choordi3 < 20 || choordi3 == 20) {
 
-document.getElementById("ds").innerHTML = cond4;
+document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + cond4 + "</p>";
 
 }else if (choordi4 > 0 && choordi4 < 20 || choordi4 == 20) {
 
@@ -348,7 +348,7 @@ document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" +
 
 }else if (choordi5 > 0 && choordi5 < 20 || choordi5 == 20) {
 
-document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + cond6 "</p>";
+document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + cond6 + "</p>";
 
 }else if (choordi6 > 0 && choordi6 < 20 || choordi6 == 20) {
 
