@@ -1,52 +1,29 @@
 
 <!DOCTYPE html>
-
 <html>
-
 <head>
-
    <title>Road setting out</title>
-
 </head>
-
 <style>
-
 #tbl {
-
-text-align: "center";
-
-width: 10%;
-
-height: 5%;
-
-text-align: center;
-
-background-color: rgb(100, 100, 220);
-
-color: rgb(255,255,255);
-
-border-radius: 2%;
-
+   text-align: "center";
+   width: 10%;
+   height: 5%;
+   text-align: center;
+   background-color: rgb(100, 100, 220);
+   color: rgb(255,255,255);
+   border-radius: 2%;
 }
-
-.buttons {
-   
-}
-
 .computations {
    position: absolute;
    left: 15%;
    right: 2%;
 }
-
 </style>
 
 <body>
-
 <h style="font-size:20px"><b>Road design</b></h>
-
 <p>The material contained in this page is for road setting out. In this page you will be able to calculate your road setting out data, however, the current version has many restrictions, for example, circular and transition curves setting is restricted to right handed curves, and the vertical curve is for symmetrical vertical curves. to find out more about how this version operates, it is advisable to download the mini report in this link <a href="road_design.docx">download a mini report</a>.</p><br><br>
-
 <button onclick="horizontal_setting()" id="tbl" type="button">Horizontal Curve Control Points</button><br>
 <button onclick="horizontal_traverse()" id="tbl" type="button">Horizontal Curve Traverse Points</button><br>
    <div class='computations'><p id='output'></p></div>
