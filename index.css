@@ -15,7 +15,7 @@ body {
    position: absolute;
    left: 15%;
    right: 2%;
-   onflow: scroll;
+   overflow: scroll;
 }
 
 .c11 {
