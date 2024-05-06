@@ -640,7 +640,7 @@ document.getElementById("ds").innerHTML = "Please Insert into all Input Fields!"
 }else if (R < 0 || I < 0) {
 document.getElementById("ds").innerHTML = "This version does not support Left Handed curves!";
 }else
-document.getElementById("ds").innerHTML = condi1;
+document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + condi1 + "</p>";
 }
 
 function transition_set() {
@@ -835,13 +835,13 @@ document.getElementById("ds").innerHTML = "This version does not support left ha
 }else if (L != 100 && L != 80 && L != 60 && L != 40) {
 document.getElementById("ds").innerHTML = btc_skdp;
 }else if (L == 100) {
-document.getElementById("ds").innerHTML = condi1;
+document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + condi1 + "</p>";
 }else if (L == 80) {
-document.getElementById("ds").innerHTML = condi2;
+document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + condi2 + "</p>";
 }else if (L == 60) {
-document.getElementById("ds").innerHTML = condi3;
+document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + condi3 + "</p>";
 }else if (L == 40) {
-document.getElementById("ds").innerHTML = condi4;
+document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + condi4 + "</p>";
 }else 
 document.getElementById("ds").innerHTML = btc_skdp;
 }
@@ -977,7 +977,7 @@ var condi1 = dir +" " + tra + dist + tra + sta + tra +  yy + tra + xx + "<br>" +
 if (xi == "" || yi == "" || pi_etc == "" || btc_pi == "" || R == "" || L == "") {
 document.getElementById("ds").innerHTML = "The first six input Fields are compulsory!";
 }else
-document.getElementById("ds").innerHTML = condi1;
+document.getElementById("ds").innerHTML = "<p style='background-color: #fff'>" + condi1 + "</p>";
 }
 
 function horizontal_setting() {
