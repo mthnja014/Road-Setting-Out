@@ -15,9 +15,7 @@ body {
    position: absolute;
    left: 15%;
    right: 2%;
-   background-color: #fff;
    onflow: scroll;
-   height: 50%;
 }
 
 .c11 {
