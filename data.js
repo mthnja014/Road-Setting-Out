@@ -451,5 +451,5 @@ function horizontal_setting() {
 }
 
 function horizontal_traverse() {
-    document.getElementById('output').innerHTML = setting.horizontal_traverse;
+    document.getElementById('output').innerHTML = traverse.horizontal_traverse;
 }
